@@ -1,6 +1,6 @@
 # Weather Agent with OpenAI
 
-A small, beginner-friendly Python project that shows how to use an OpenAI model as an agent.
+A small, beginner-friendly Python project that shows how to use an OpenAI model as an agent. The complete example lives in one readable Python file.
 
 The user enters a city, the model chooses a weather tool, the app fetches live weather data, and the model turns that data into a natural answer.
 
@@ -62,7 +62,7 @@ OPENAI_MODEL=gpt-5-nano
 ## Run the app
 
 ```bash
-python main.py
+python3 main.py
 ```
 
 Example:
@@ -75,15 +75,12 @@ It is currently 24C and partly cloudy in Toronto, Ontario, Canada.
 
 ## How the agent works
 
-The model does not fetch weather directly. Instead, it decides when to call the `get_weather` tool. Your Python code runs the tool, sends the tool result back to the model, and then the model writes the final answer.
+The model does not fetch weather directly. Instead, the app uses one simple tool-calling round trip:
 
-That is the key agent pattern this repo demonstrates:
-
-1. Give the model a tool
-2. Let the model choose when to use it
-3. Run the tool in your code
-4. Return the result to the model
-5. Show the final answer to the user
+1. Send the city and weather tool to the model
+2. Run `get_weather` with the city chosen by the model
+3. Send the weather result back to the model
+4. Print the model's short answer
 
 ## Notes
 
